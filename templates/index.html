@@ -11,16 +11,25 @@
     <table>
         <tr>
             <th>Task</th>
+            <th>Added Date</th>
             <th>Options</th>
         </tr>
+        {% for task in tasks %}
         <tr>
-            <td>Sample</td>
+            <td>{{ task.task }}</td>
+            <td>{{ task.added_date|UNIX2Datetime }}</td>
             <td>
-                <a>Done</a> <br>
-                <a>Update</a>
+                <a href="/delete/{{ task.id }}/{{ task.added_date }}">Done</a> <br>
+                <a href="/update/{{ task.id }}/{{ task.added_date }}">Update</a>
             </td>
         </tr>
+        {% endfor %}
     </table>
+
+    <form method="POST" action="/" autocomplete="off">
+        <input type="text" name="task" id="task">
+        <input type="submit" value="Add Task">
+    </form>
 
     </div>
 

@@ -9,3 +9,5 @@ instance/
 
 # IDEA
 .idea
+
+shared-local-instance.db

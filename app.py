@@ -33,6 +33,24 @@ def home():
 def UNIX2Datetime(unix):
     return datetime.datetime.fromtimestamp(unix).strftime('%Y-%m-%d %H:%M:%S')
 
+@app.route('/delete/<string:id>/<int:added_date>')
+def delete(id, added_date):
+    try:
+        dbtable.delete_item(
+            Key={
+                'id': id,
+                'added_date': added_date
+            }
+        )
+    except:
+        return "Failed to Remove Task"
+
+    return redirect('/')
+
+@app.route('/update/<string:id>/<int:added_date>')
+def update(id, added_date):
+    return redirect('/')
+
 def getTasks():
     try:
         response = dbtable.scan()
