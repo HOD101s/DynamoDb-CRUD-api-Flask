@@ -1,0 +1,28 @@
+table, td, th, tr {
+    border: 1px solid #aaa;
+}
+
+table {
+    margin: auto;
+    border-collapse: collapse;
+    width: 50%;
+}
+
+th {
+    height: 30px;
+}
+
+td {
+    text-align: center;
+    padding: 5px;
+}
+
+.form {
+    margin-top: 20px;
+}
+
+div.content {
+    margin: auto;
+    text-align: center;
+    width: 70%;
+}
