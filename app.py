@@ -47,9 +47,31 @@ def delete(id, added_date):
 
     return redirect('/')
 
-@app.route('/update/<string:id>/<int:added_date>')
+@app.route('/update/<string:id>/<int:added_date>', methods=['POST','GET'])
 def update(id, added_date):
-    return redirect('/')
+    if request.method == 'POST':
+        try:
+            dbtable.update_item(
+                Key={
+                    'id': id,
+                    'added_date': added_date
+                },
+                UpdateExpression='SET task = :val1',
+                ExpressionAttributeValues={
+                    ':val1': request.form["task"]
+                }
+            )
+        except:
+            return "Failed to Update Task"
+        return redirect('/')
+    else:
+        response = dbtable.get_item(
+            Key={
+                'id': id,
+                'added_date': added_date
+            }
+        )
+        return render_template('update.html', task=response["Item"])
 
 def getTasks():
     try:

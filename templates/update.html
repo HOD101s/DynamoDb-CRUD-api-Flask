@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Update Task</title>
+{% endblock %}
+
+{% block body %}
+    <div class="content">
+    <h1>DynamoDb CRUD with Flask</h1>
+    <h3>{{ task.task }}</h3>
+    <form method="POST" action="/update/{{ task.id }}/{{ task.added_date }}" autocomplete="off">
+        <input type="text" name="task" id="task">
+        <input type="submit" value="Add Task">
+    </form>
+
+    </div>
+
+
+{% endblock %}
