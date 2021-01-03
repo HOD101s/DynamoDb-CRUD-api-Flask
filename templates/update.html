@@ -7,6 +7,7 @@
 {% block body %}
     <div class="content">
     <h1>DynamoDb CRUD with Flask</h1>
+    <h2>Update Task</h2>
     <h3>{{ task.task }}</h3>
     <form method="POST" action="/update/{{ task.id }}/{{ task.added_date }}" autocomplete="off">
         <input type="text" name="task" id="task">
