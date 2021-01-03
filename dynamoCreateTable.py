@@ -4,7 +4,7 @@ import boto3
 
 ddb = boto3.resource("dynamodb", endpoint_url="http://localhost:8000")
 
-table = ddb.create_table(
+dbtable = ddb.create_table(
     TableName='tasks',
     KeySchema=[
         {
@@ -21,9 +21,9 @@ table = ddb.create_table(
             'AttributeName': 'id',
             'AttributeType': 'S'
         },
-{
+        {
             'AttributeName': 'added_date',
-            'AttributeType': 'S'
+            'AttributeType': 'N'
         },
     ],
     ProvisionedThroughput={
